@@ -1,0 +1,1 @@
+python semantify/data_management/creation/create_data.py --output_path ./datasets_large --model_type flame --specific expression --use_tex --multiview --num_of_imgs 10000

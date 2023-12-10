@@ -1,0 +1,45 @@
+hydra:
+  run:
+    dir: ${tensorboard_logger.save_dir}/runs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+output_path: /home/ubuntu/junwan/Semantify/outputs/${now:%H-%M-%S}
+run_name: ap
+
+seed: 42
+
+tensorboard_logger:
+  name: ${run_name}
+  save_dir: ${append_to_root_dir:train_logs}
+  log_graph: True
+
+train_size: 0.8
+
+dataloader:
+  batch_size: 3000
+  num_workers: 1
+  shuffle: True
+  drop_last: False
+
+trainer:
+  gpus: 1
+  max_epochs: 50
+  check_val_every_n_epoch: 5
+  log_every_n_steps: 3
+
+dataset:
+  data_dir: /home/ubuntu/junwan/Semantify/datasets
+  optimize_features:
+    - expression_params  # betas (SMPLX | SMPL)/ beta (SMAL) / expression_params (FLAME) / shape_params (FLAME)
+  out_features: ${model_conf.out_features}
+  labels_to_get:  # FILL DESCRIPTORS TO OPTIMIZE
+    - happy
+    - sad
+    - angry
+    - surprised
+    - disgusted
+    - fearful
+
+model_conf:
+  hidden_size: [800, 500]
+  out_features: 10
+  num_hiddens: 1

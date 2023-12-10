@@ -1,0 +1,2 @@
+python semantify/applications/sliders_demo_py3d.py --model_type flame --specific expression --disable_limiters
+# python semantify/applications/image2shape.py --images_paths <IMAGES_PATHS> --model_type <TYPE> --specific <SPECIFIC> --output_path <PATH>

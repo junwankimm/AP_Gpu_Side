@@ -1,0 +1,1 @@
+python semantify/data_management/creation/clip_encoder.py --imgs_dir ./datasets_large --model_type flame --specific expression --multiview
